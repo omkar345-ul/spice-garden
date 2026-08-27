@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Spice Garden Restaurant</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: #fff8ed;
+  color: #211914;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1, h2, h3 {
+  font-family: "Playfair Display", serif;
+}
+
+/* NAVBAR */
+header {
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: auto;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: white;
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #f0b75c;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  color: white;
+}
+
+.nav-links a:hover {
+  color: #f0b75c;
+}
+
+.nav-button,
+.primary-btn {
+  background: #c63c22;
+  color: white;
+  padding: 13px 22px;
+  border-radius: 5px;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.nav-button:hover,
+.primary-btn:hover {
+  background: #8f2818;
+  transform: translateY(-2px);
+}
+
+.menu-btn {
+  display: none;
+  border: none;
+  background: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* HERO */
+.hero {
+  min-height: 720px;
+  display: flex;
+  align-items: center;
+  color: white;
+  background:
+    linear-gradient(90deg, rgba(27,15,10,.95), rgba(27,15,10,.55), rgba(27,15,10,.2)),
+    radial-gradient(circle at 75% 45%, #c65c27, #492015 42%, #180f0c 80%);
+}
+
+.hero-content {
+  width: min(1200px, 100%);
+  margin: auto;
+  padding: 120px 25px 70px;
+}
+
+.eyebrow {
+  color: #d49b42;
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+}
+
+.hero h1 {
+  font-size: clamp(50px, 7vw, 88px);
+  line-height: 1.02;
+}
+
+.hero h1 span {
+  color: #f0b75c;
+}
+
+.hero-text {
+  max-width: 520px;
+  margin: 25px 0;
+  color: #eee0d7;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.secondary-btn {
+  border: 1px solid rgba(255,255,255,.6);
+  color: white;
+  padding: 12px 22px;
+  border-radius: 5px;
+}
+
+/* GENERAL */
+.section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 100px 25px;
+}
+
+/* ABOUT */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  align-items: center;
+}
+
+.about-image {
+  min-height: 470px;
+  border-radius: 10px;
+  background:
+    radial-gradient(circle at 50% 35%, #f2a04a, #9d381d 45%, #3a170e);
+  position: relative;
+}
+
+.image-card {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background: #c63c22;
+  color: white;
+  padding: 25px 35px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.image-card span {
+  display: block;
+  font-size: 12px;
+}
+
+.image-card strong {
+  display: block;
+  font-family: "Playfair Display";
+  font-size: 35px;
+}
+
+.about-content h2,
+.section-heading h2,
+.contact h2 {
+  font-size: clamp(38px, 5vw, 58px);
+  line-height: 1.1;
+  margin-bottom: 25px;
+}
+
+.about-content p {
+  color: #776b63;
+  margin-bottom: 15px;
+}
+
+.text-link {
+  color: #c63c22;
+  font-weight: bold;
+}
+
+/* MENU */
+.section-heading {
+  text-align: center;
+  max-width: 650px;
+  margin: auto auto 55px;
+}
+
+.section-heading > p:last-child {
+  color: #776b63;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.menu-item {
+  background: white;
+  padding: 25px;
+  display: grid;
+  grid-template-columns: 65px 1fr auto;
+  align-items: center;
+  gap: 15px;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(53,29,16,.06);
+  transition: .3s;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+}
+
+.menu-item h3 {
+  font-size: 20px;
+}
+
+.menu-item p {
+  color: #776b63;
+  font-size: 13px;
+}
+
+.menu-item > strong {
+  color: #c63c22;
+  font-size: 18px;
+}
+
+.food-icon {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  background: #fff1df;
+  border-radius: 50%;
+  font-size: 28px;
+}
+
+/* SPECIAL */
+.special {
+  max-width: 1150px;
+  margin: 20px auto 100px;
+  padding: 55px;
+  border-radius: 10px;
+  background: #211914;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.special h2 {
+  font-size: 45px;
+  margin-bottom: 12px;
+}
+
+.special p {
+  color: #cfc2ba;
+  max-width: 550px;
+  margin-bottom: 25px;
+}
+
+.special-price {
+  border-left: 1px solid #544840;
+  padding-left: 60px;
+  text-align: center;
+}
+
+.special-price span {
+  display: block;
+  color: #d49b42;
+  letter-spacing: 2px;
+  font-size: 12px;
+}
+
+.special-price strong {
+  font-family: "Playfair Display";
+  font-size: 60px;
+}
+
+/* REVIEWS */
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.review {
+  background: white;
+  padding: 35px;
+  border-radius: 8px;
+}
+
+.stars {
+  color: #d49b42;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.review p {
+  color: #776b63;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+/* CONTACT */
+.contact-box {
+  background: #f0dfcc;
+  padding: 70px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+}
+
+.contact-details {
+  color: #776b63;
+  margin-top: 30px;
+}
+
+.contact-details p {
+  margin: 10px 0;
+}
+
+.hours {
+  background: white;
+  padding: 35px;
+  border-radius: 8px;
+}
+
+.hours h3 {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.hours p {
+  border-bottom: 1px solid #eee;
+  padding: 13px 0;
+  font-size: 14px;
+  color: #776b63;
+}
+
+.hours span {
+  float: right;
+  color: #211914;
+  font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+  background: #211914;
+  color: white;
+  padding: 35px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer p {
+  color: #9e918a;
+  font-size: 13px;
+}
+
+/* MOBILE */
+@media (max-width: 800px) {
+
+  .nav-links,
+  .nav-button {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .nav-links.active {
+    display: flex;
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    right: 20px;
+    background: #261812;
+    padding: 25px;
+    flex-direction: column;
+    gap: 18px;
+    border-radius: 5px;
+  }
+
+  .about,
+  .contact-box {
+    grid-template-columns: 1fr;
+  }
+
+  .about {
+    gap: 50px;
+  }
+
+  .menu-grid,
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .special {
+    margin: 20px 25px 80px;
+    padding: 40px 30px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .special-price {
+    border-left: 0;
+    border-top: 1px solid #544840;
+    padding: 25px 0 0;
+    width: 100%;
+  }
+
+  .contact-box {
+    padding: 40px 25px;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav class="navbar">
+
+  <a href="#" class="logo">
+    Spice<span>Garden</span>
+  </a>
+
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <a href="#contact" class="nav-button">Book a Table</a>
+
+</nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+  <div class="hero-content">
+
+    <p class="eyebrow">AUTHENTIC INDIAN CUISINE</p>
+
+    <h1>
+      Where Every<br>
+      <span>Spice Tells a Story.</span>
+    </h1>
+
+    <p class="hero-text">
+      Traditional Indian flavors, fresh ingredients and unforgettable
+      dining experiences — all served with love.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#menu" class="primary-btn">Explore Menu →</a>
+      <a href="#contact" class="secondary-btn">Reserve a Table</a>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="about section" id="about">
+
+  <div class="about-image">
+
+    <div class="image-card">
+      <span>Since</span>
+      <strong>2012</strong>
+    </div>
+
+  </div>
+
+  <div class="about-content">
+
+    <p class="eyebrow">OUR STORY</p>
+
+    <h2>
+      A Taste of India,
+      <br>
+      Made With Heart.
+    </h2>
+
+    <p>
+      At Spice Garden, we believe great food brings people together.
+      Our chefs combine time-honored recipes with fresh local ingredients
+      to create dishes full of color, aroma and authentic flavor.
+    </p>
+
+    <p>
+      From our family kitchen to your table, every plate is prepared
+      with passion and a little extra spice.
+    </p>
+
+    <a href="#menu" class="text-link">
+      Discover our menu →
+    </a>
+
+  </div>
+
+</section>
+
+<!-- MENU -->
+<section class="menu section" id="menu">
+
+  <div class="section-heading">
+
+    <p class="eyebrow">OUR MENU</p>
+
+    <h2>
+      Favorites From
+      <br>
+      Our Kitchen
+    </h2>
+
+    <p>
+      Carefully prepared dishes inspired by India's rich
+      culinary traditions.
+    </p>
+
+  </div>
+
+  <div class="menu-grid">
+
+    <article class="menu-item">
+      <div class="food-icon">🍛</div>
+      <div>
+        <h3>Butter Chicken</h3>
+        <p>Tender chicken in creamy tomato & butter sauce.</p>
+      </div>
+      <strong>₹349</strong>
+    </article>
+
+    <article class="menu-item">
+      <div class="food-icon">🥘</div>
+      <div>
+        <h3>Paneer Tikka</h3>
+        <p>Char-grilled cottage cheese with aromatic spices.</p>
+      </div>
+      <strong>₹299</strong>
+    </article>
+
+    <article class="menu-item">
+      <div class="food-icon">🍚</div>
+      <div>
+        <h3>Chicken Biryani</h3>
+        <p>Fragrant basmati rice layered with spiced chicken.</p>
+      </div>
+      <strong>₹379</strong>
+    </article>
+
+    <article class="menu-item">
+      <div class="food-icon">🫓</div>
+      <div>
+        <h3>Garlic Naan</h3>
+        <p>Soft tandoor-baked bread topped with fresh garlic.</p>
+      </div>
+      <strong>₹89</strong>
+    </article>
+
+    <article class="menu-item">
+      <div class="food-icon">🥗</div>
+      <div>
+        <h3>Garden Special</h3>
+        <p>Fresh seasonal vegetables with signature spices.</p>
+      </div>
+      <strong>₹249</strong>
+    </article>
+
+    <article class="menu-item">
+      <div class="food-icon">🍮</div>
+      <div>
+        <h3>Gulab Jamun</h3>
+        <p>Warm traditional dessert served with fragrant syrup.</p>
+      </div>
+      <strong>₹129</strong>
+    </article>
+
+  </div>
+
+</section>
+
+<!-- SPECIAL -->
+<section class="special">
+
+  <div>
+
+    <p class="eyebrow">CHEF'S SPECIAL</p>
+
+    <h2>Weekend Biryani Feast</h2>
+
+    <p>
+      Enjoy our signature slow-cooked chicken biryani,
+      raita, salad and a dessert for two.
+    </p>
+
+    <a href="#contact" class="primary-btn">
+      Reserve Now →
+    </a>
+
+  </div>
+
+  <div class="special-price">
+    <span>FOR TWO</span>
+    <strong>₹699</strong>
+  </div>
+
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews section" id="reviews">
+
+  <div class="section-heading">
+
+    <p class="eyebrow">CUSTOMER LOVE</p>
+
+    <h2>What Our Guests Say</h2>
+
+  </div>
+
+  <div class="review-grid">
+
+    <article class="review">
+
+      <div class="stars">★★★★★</div>
+
+      <p>
+        “Absolutely delicious! The butter chicken was rich
+        and flavorful. One of the best Indian meals I've had.”
+      </p>
+
+      <strong>— Priya S.</strong>
+
+    </article>
+
+    <article class="review">
+
+      <div class="stars">★★★★★</div>
+
+      <p>
+        “Beautiful atmosphere, friendly service and amazing
+        biryani. We'll definitely be coming back!”
+      </p>
+
+      <strong>— Rahul M.</strong>
+
+    </article>
+
+    <article class="review">
+
+      <div class="stars">★★★★★</div>
+
+      <p>
+        “Spice Garden is now our favorite family restaurant.
+        Everything tastes fresh and authentic.”
+      </p>
+
+      <strong>— Ananya K.</strong>
+
+    </article>
+
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<section class="contact section" id="contact">
+
+  <div class="contact-box">
+
+    <div>
+
+      <p class="eyebrow">COME VISIT US</p>
+
+      <h2>
+        Let's Share
+        <br>
+        A Meal.
+      </h2>
+
+      <div class="contact-details">
+
+        <p>📍 42 MG Road, Pune, Maharashtra</p>
+
+        <p>📞 +91 98765 43210</p>
+
+        <p>✉️ hello@spicegarden.example</p>
+
+      </div>
+
+    </div>
+
+    <div class="hours">
+
+      <h3>Opening Hours</h3>
+
+      <p>
+        Monday – Thursday
+        <span>11:30 AM – 10:30 PM</span>
+      </p>
+
+      <p>
+        Friday – Saturday
+        <span>11:30 AM – 11:30 PM</span>
+      </p>
+
+      <p>
+        Sunday
+        <span>12:00 PM – 10:00 PM</span>
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+
+  <div class="logo">
+    Spice<span>Garden</span>
+  </div>
+
+  <p>
+    © 2026 Spice Garden. Made with ❤️ and a little spice.
+  </p>
+
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>
